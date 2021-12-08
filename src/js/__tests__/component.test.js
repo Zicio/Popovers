@@ -1,28 +1,23 @@
-import ValidCardWidget from '../ValidCardWidget';
+import ButtonWidget from '../ButtonWidget';
 
-test('should render self', () => {
+test('should render DOM', () => {
   document.body.innerHTML = '<div id="container"></div>';
   const container = document.getElementById('container');
-  const widget = new ValidCardWidget(container);
+  const widget = new ButtonWidget(container);
   widget.bindToDOM();
-  expect(container.innerHTML).toEqual(ValidCardWidget.markup);
+  expect(container.innerHTML).toEqual(ButtonWidget.markup);
 });
 
-test.each([
-  ['4532656374904488', '.success', 'success-active'],
-  ['5138601817396202', '.success', 'success-active'],
-  ['372852891978060', '.success', 'success-active'],
-  ['4532656374904588', '.success', 'success-failure'],
-  ['4532776467122481121', '.failure', 'success-active'],
-])(('should be valid'), (number, resultClass, expected) => {
+test('should show and remove popovers', () => {
   document.body.innerHTML = '<div id="container"></div>';
   const container = document.getElementById('container');
-  const widget = new ValidCardWidget(container);
+  const widget = new ButtonWidget(container);
   widget.bindToDOM();
-  const result = container.querySelector(resultClass);
-  const input = container.querySelector(ValidCardWidget.inputSelector);
-  input.value = number;
-  const submit = container.querySelector('.check__button');
+  const submit = container.querySelector(ButtonWidget.submitSelector);
+  const popovers = container.querySelector(ButtonWidget.popoversSelector);
   submit.click();
-  expect(result.classList.contains(expected));
+  expect(popovers.classList.contains('active')).toBeTruthy();
+  submit.click();
+  expect(popovers.classList.contains('active')).toBeFalsy();
 });
+

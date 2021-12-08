@@ -15,9 +15,6 @@ export default class Button {
 
   static appearance(e) {
     if (e.target.classList.contains('submit')) {
-      const button = e.target;
-      const parent = button.offsetParent;
-
       const popovers = document.querySelector('.popovers');
       popovers.classList.toggle('active');
       const top = -(popovers.offsetTop + 1.1 * popovers.offsetHeight);

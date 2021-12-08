@@ -35,6 +35,11 @@
         left: 50%;
 }
 
+
+.active {
+    display: inline-block;
+}
+
 .popovers__title {
     border-bottom: 1px solid rgb(199, 199, 199);
     padding-left: 10px;
@@ -54,6 +59,3 @@
     font-size: 25px;
 }
 
-.active {
-    display: inline-block;
-}
