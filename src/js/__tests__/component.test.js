@@ -20,4 +20,3 @@ test('should show and remove popovers', () => {
   submit.click();
   expect(popovers.classList.contains('active')).toBeFalsy();
 });
-
